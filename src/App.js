@@ -1,13 +1,16 @@
 // src/App.js
-
 import React from 'react';
-import Board from './components/Board';  // Import the Board component
+import Board from './components/Board'; 
+import Navbar from './components/Navbar'; 
+import Footer from './components/Footer'; // 
 import './styles.css';  // Import the CSS file for styles
 
 const App = () => {
   return (
     <div className="app">
-      <Board />  {/* Render the Board component */}
+      <Navbar />
+      <Board />
+      <Footer />
     </div>
   );
 };
