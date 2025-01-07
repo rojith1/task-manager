@@ -1,0 +1,84 @@
+/* src/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .app {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .columns {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .column {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .column h2 {
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  .task-form input,
+  .task-form select,
+  .task-form button {
+    margin-bottom: 10px;
+  }
+  
+  .task-form button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .task-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card h3 {
+    color: #333;
+  }
+  
+  button {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #ff4500;
+  }
+  
+  .task-edit-form input,
+  .task-edit-form select,
+  .task-edit-form button,
+  .task-edit-form textarea {
+    margin-bottom: 10px;
+  }
+  
