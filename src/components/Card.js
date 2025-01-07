@@ -1,6 +1,5 @@
-// src/components/Card.js
-
 import React, { useState } from 'react';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa'; // Import the icons
 
 const Card = ({ task, onEditTask, onDeleteTask }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -20,7 +19,17 @@ const Card = ({ task, onEditTask, onDeleteTask }) => {
   };
 
   return (
-    <div className="card" style={{ backgroundColor: task.priority === 'high' ? '#ffcccc' : task.priority === 'medium' ? '#fff0b3' : '#e6f7ff' }}>
+    <div
+      className="card"
+      style={{
+        backgroundColor:
+          task.priority === 'high'
+            ? '#ffcccc'
+            : task.priority === 'medium'
+            ? '#fff0b3'
+            : '#e6f7ff',
+      }}
+    >
       {isEditing ? (
         <div className="task-edit-form">
           <input
@@ -58,14 +67,20 @@ const Card = ({ task, onEditTask, onDeleteTask }) => {
           <button onClick={handleSaveEdit}>Save</button>
         </div>
       ) : (
-        <div>
+        <div className="card-content">
           <h3>{task.task}</h3>
           <p>{task.description}</p>
           <p>Start: {task.startDate}</p>
           <p>End: {task.endDate}</p>
           <p>Priority: {task.priority}</p>
-          <button onClick={() => setIsEditing(true)}>Edit</button>
-          <button onClick={() => onDeleteTask(task)}>Delete</button>
+          <div className="card-buttons">
+            <button onClick={() => setIsEditing(true)}>
+              <FaEdit /> {/* Edit Icon */}
+            </button>
+            <button onClick={() => onDeleteTask(task)}>
+              <FaTrashAlt /> {/* Delete Icon */}
+            </button>
+          </div>
         </div>
       )}
     </div>
