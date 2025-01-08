@@ -1,7 +1,8 @@
 // src/components/Signup.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from '../firebase'; // Import the Firebase signup method
+import { createUserWithEmailAndPassword } from '../firebase'; // Firebase signup function
+import '../auth.css'; // Import CSS for styling
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -13,7 +14,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(email, password);
-      navigate('/dashboard'); // Redirect after successful signup
+      navigate('/dashboard'); // Redirect to dashboard on successful signup
     } catch (err) {
       setError(err.message);
     }
@@ -22,7 +23,7 @@ const Signup = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h2 className="auth-heading">Create an Account</h2>
+        <h2 className="auth-heading">Sign Up</h2>
         <form onSubmit={handleSignup} className="auth-form">
           <div className="input-group">
             <label>Email</label>
@@ -46,7 +47,7 @@ const Signup = () => {
         </form>
         {error && <p className="error-message">{error}</p>}
         <p className="switch-link">
-          Already have an account? <a href="/login">Log In</a>
+          Already have an account? <a onClick={() => navigate('/login')}>Log In</a>
         </p>
       </div>
     </div>

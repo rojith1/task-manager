@@ -1,7 +1,8 @@
 // src/components/Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword } from '../firebase'; // Import the Firebase login method
+import { signInWithEmailAndPassword } from '../firebase'; // Firebase login function
+import '../auth.css'; // Import CSS for styling
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -13,7 +14,7 @@ const Login = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(email, password);
-      navigate('/dashboard'); // Redirect after successful login
+      navigate('/dashboard'); // Redirect to dashboard on successful login
     } catch (err) {
       setError(err.message);
     }
@@ -22,7 +23,7 @@ const Login = () => {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h2 className="auth-heading">Welcome Back</h2>
+        <h2 className="auth-heading">Log In</h2>
         <form onSubmit={handleLogin} className="auth-form">
           <div className="input-group">
             <label>Email</label>
@@ -46,7 +47,7 @@ const Login = () => {
         </form>
         {error && <p className="error-message">{error}</p>}
         <p className="switch-link">
-          Don't have an account? <a href="/signup">Sign Up</a>
+          Don’t have an account? <a onClick={() => navigate('/signup')}>Sign Up</a>
         </p>
       </div>
     </div>

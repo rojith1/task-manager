@@ -1,30 +1,37 @@
-// src/App.js
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Board from './components/Board';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Login from './components/Login';
-import Signup from './components/Signup';
-// import Dashboard from './components/Dashboard'; // Replace with your actual Dashboard component
-// import ProtectedRoute from './components/ProtectedRoute'; // Import ProtectedRoute
-
-import './styles.css'; // Import the CSS file for styles
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Board from "./components/Board";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 const App = () => {
   return (
     <Router>
-      <Navbar /> {/* Navbar should be visible on all pages */}
-      <div className="app">
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          {/* Board can be accessed by everyone */}
-          <Route path="/" element={<Board />} />
-        </Routes>
-      </div>
-      <Footer /> {/* Footer should be visible on all pages */}
+      <AppContent />
     </Router>
+  );
+};
+
+const AppContent = () => {
+  const location = useLocation();
+
+  // Check if current route is for login or signup
+  const isAuthPage = location.pathname === "/login" || location.pathname === "/signup";
+
+  return (
+    <div className="app">
+      {!isAuthPage && <Navbar />} {/* Render Navbar only for non-auth pages */}
+
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/" element={<Board />} />
+      </Routes>
+
+      {!isAuthPage && <Footer />} {/* Render Footer only for non-auth pages */}
+    </div>
   );
 };
 
